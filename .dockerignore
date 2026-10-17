@@ -1,0 +1,9 @@
+.venv
+.work
+.env
+runtime
+backups
+__pycache__
+.pytest_cache
+*.pdf
+*.docx

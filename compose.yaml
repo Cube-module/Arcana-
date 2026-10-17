@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: arcana
+      POSTGRES_DB: arcana
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backups:/backups
+    ports:
+      - "127.0.0.1:5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U arcana -d arcana"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+  app:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://arcana:${POSTGRES_PASSWORD}@db:5432/arcana
+    volumes:
+      - ./runtime:/app/runtime
+      - ./assets:/app/assets:ro
+    depends_on:
+      db:
+        condition: service_healthy
+    command: ["python", "-m", "app.main"]
+volumes:
+  postgres_data:

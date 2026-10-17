@@ -1,0 +1,10 @@
+aiogram==3.31.0
+SQLAlchemy==2.1.4
+asyncpg==0.32.0
+alembic==1.20.0
+pydantic==2.13.5
+pydantic-settings==2.16.0
+httpx==0.28.1
+PyYAML==6.0.3
+tzdata==2026.5
+greenlet==3.5.6

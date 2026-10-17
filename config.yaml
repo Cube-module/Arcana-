@@ -1,0 +1,21 @@
+input:
+  name: 40
+  question: 1000
+  option: 200
+  diary: 2000
+quota:
+  daily: 10
+  weekly: 1
+llm:
+  concurrency: 3
+  queue_limit: 50
+  connect_timeout: 3
+  read_timeout: 12
+  budget: 30
+  json_mode: true
+session_ttl: 600
+lease: 60
+late_delivery_hours: 2
+monthly_catchup_days: 7
+storage_limit: 5000
+timezones: [Europe/Moscow, Europe/Kaliningrad, Europe/Samara, Asia/Yekaterinburg, Asia/Omsk, Asia/Novosibirsk, Asia/Irkutsk, Asia/Yakutsk, Asia/Vladivostok, Asia/Magadan, Asia/Kamchatka, UTC]
